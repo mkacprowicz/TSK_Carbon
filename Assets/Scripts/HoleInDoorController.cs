@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class HoleInDoorController : MonoBehaviour
 {
-    public GameObject Hole;
+    public GameObject HoleOpened;
+    public GameObject HoleClosed;
 
-    bool IsOpen = true;
+    bool IsOpen = false;
 
     public void OpenCloseHole()
     {
-        if (Hole != null)
+        if (HoleOpened != null)
         {
-            if (IsOpen)
+            if (HoleClosed != null)
             {
-                Hole.SetActive(false);
-                IsOpen = false;
-            }
-            else
-            {
-                Hole.SetActive(true);
-                IsOpen = true;
+                if (IsOpen)
+                {
+                    HoleClosed.SetActive(true);
+                    HoleOpened.SetActive(false);
+                    IsOpen = false;
+                }
+                else
+                {
+                    HoleOpened.SetActive(true);
+                    HoleClosed.SetActive(false);
+                    IsOpen = true;
+                }
             }
         }
     }

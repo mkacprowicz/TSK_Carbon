@@ -14,12 +14,12 @@ public class DoorController : MonoBehaviour
         {
             if (IsOpen)
             {
-                Door.transform.Rotate(new Vector3(0, 90, 0));
+                Door.transform.Rotate(new Vector3(0, -90, 0));
                 IsOpen = false;
             }
             else
             {
-                Door.transform.Rotate(new Vector3(0, -90, 0));
+                Door.transform.Rotate(new Vector3(0, 90, 0));
                 IsOpen = true;
             }
         }

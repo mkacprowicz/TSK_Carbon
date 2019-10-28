@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class HoleInWallController : MonoBehaviour
 {
-    public GameObject Hole;
+    public GameObject HoleOpened;
+    public GameObject HoleClosed;
 
-    bool IsOpen = true;
+    bool IsOpen = false;
 
     public void OpenCloseHole()
     {
-        if (Hole != null)
+        if (HoleOpened != null)
         {
-            if (IsOpen)
-            {
-                Hole.SetActive(false);
-                IsOpen = false;
-            }
-            else
-            {
-                Hole.SetActive(true);
-                IsOpen = true;
+            if (HoleClosed != null)
+            {   
+                if (IsOpen)
+                {
+                    HoleClosed.SetActive(true);
+                    HoleOpened.SetActive(false);         
+                    IsOpen = false;
+                }
+                else
+                {
+                    HoleOpened.SetActive(true);
+                    HoleClosed.SetActive(false);
+                    IsOpen = true;
+                }
             }
         }
     }

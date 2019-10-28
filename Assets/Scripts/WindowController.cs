@@ -14,12 +14,12 @@ public class WindowController : MonoBehaviour
         {
             if (IsOpen)
             {
-                Window.transform.Rotate(new Vector3(0, 90, 0));
+                Window.transform.Rotate(new Vector3(0, -90, 0));
                 IsOpen = false;
             }
             else
             {
-                Window.transform.Rotate(new Vector3(0, -90, 0));
+                Window.transform.Rotate(new Vector3(0, 90, 0));
                 IsOpen = true;
             }
         }
