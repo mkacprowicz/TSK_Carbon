@@ -6,26 +6,43 @@ using UnityEngine;
 public class MoleculeMovement : MonoBehaviour
 {
     public Vector3 velocity = new Vector3(15.0f, 15.0f, 15.0f);
-    public float temperature = 0.0f;
-    
+    public float temperature = 5.0f;
+
     private Rigidbody rb;
     private Vector3 currentMovementDirection;
+    private Vector3 lastPos;
+    private bool heated = false;
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.cyan;
-        rb = GetComponent<Rigidbody>();       
+        rb = GetComponent<Rigidbody>();
         transform.rotation = UnityEngine.Random.rotation;
-        
+
         currentMovementDirection = transform.forward * 5.0f;
+        lastPos = transform.position;
+        Debug.Log(currentMovementDirection);
     }
 
     void Update()
     {
+        Vector3 offset = transform.position - lastPos;
+        if (offset.y > 0.0f)
+        {
+            lastPos = transform.position;
+        }
+        else
+        {
+            //transform.position = transform.position + new Vector3(0, -3.0f, 0);
+        }
     }
 
     void FixedUpdate()
     {
         rb.velocity = currentMovementDirection;
+        //if (heated)
+        //{
+        //transform.GetComponent<Rigidbody>().AddForce(new Vector3(0, 5.0f, 0), ForceMode.Impulse);
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -53,6 +70,12 @@ public class MoleculeMovement : MonoBehaviour
     public void HeatUp()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        transform.GetComponent<Rigidbody>().AddForce(new Vector3(0, 50.0f, 0), ForceMode.Impulse);
+        currentMovementDirection = new Vector3(0, 1.0f, 0) * 8.0f;
+        heated = true;
+    }
+
+    public bool isHeated()
+    {
+        return heated;
     }
 }

@@ -20,7 +20,10 @@ public class Heater : MonoBehaviour
     {
         if (other.CompareTag("Molecule"))
         {
-            other.GetComponent<MoleculeMovement>().HeatUp();
+            if (!other.GetComponent<MoleculeMovement>().isHeated())
+            {
+                other.GetComponent<MoleculeMovement>().HeatUp();
+            }           
         }
     }
 }
