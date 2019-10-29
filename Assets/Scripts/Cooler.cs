@@ -16,13 +16,13 @@ public class Cooler : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Molecule"))
+        if (collision.collider.CompareTag("Molecule"))
         {
-            if (other.GetComponent<MoleculeMovement>().isHeated())
+            if (collision.collider.GetComponent<MoleculeMovement>().isHeated())
             {
-                other.GetComponent<MoleculeMovement>().HeatUp();
+                collision.collider.GetComponent<MoleculeMovement>().HeatDown();
             }
         }
     }

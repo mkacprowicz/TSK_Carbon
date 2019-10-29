@@ -69,6 +69,14 @@ public class MoleculeMovement : MonoBehaviour
         heated = true;
     }
 
+    public void HeatDown()
+    {
+        GetComponent<Renderer>().material.color = Color.cyan;
+        temperature = 200.0f;
+        currentMovementDirection = transform.forward * KineticEnergy();
+        heated = false;
+    }
+
     public bool isHeated()
     {
         return heated;
