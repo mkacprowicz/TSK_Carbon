@@ -1,19 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MoleculeMovement : MonoBehaviour
 {
-    public float velocity = 2.0f;
-    public float temperature = 15.0f;
-
-    private bool oneTime = true;
-
+    public Vector3 velocity = new Vector3(15.0f, 15.0f, 15.0f);
+    public float temperature = 0.0f;
+    
+    private Rigidbody rb;
+    private Vector3 currentMovementDirection;
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.cyan;
-        //transform.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-velocity, velocity), Random.Range(-velocity, velocity), Random.Range(-velocity, velocity)), ForceMode.Impulse);
-        //transform.GetComponent<Rigidbody>().AddForce(new Vector3(1.0f, 3.0f, 0));
+        rb = GetComponent<Rigidbody>();       
+        transform.rotation = UnityEngine.Random.rotation;
+        
+        currentMovementDirection = transform.forward * 5.0f;
     }
 
     void Update()
@@ -22,14 +25,30 @@ public class MoleculeMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (oneTime)
-        {
-            //GetComponent<Rigidbody>().AddForce(impulseMagnitude, ForceMode.Impulse);
-            transform.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-velocity, velocity), Random.Range(-velocity, velocity), Random.Range(-velocity, velocity)), ForceMode.Impulse);
-            oneTime = false;
-        }
+        rb.velocity = currentMovementDirection;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        ReflectProjectile();
+    }
+
+    private void ReflectProjectile(Rigidbody rb, Vector3 reflectVector)
+    {
+        velocity = Vector3.Reflect(velocity, reflectVector);
+        rb.velocity = velocity;
+    }
+
+    private void ReflectProjectile()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, currentMovementDirection);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            currentMovementDirection = Vector3.Reflect(currentMovementDirection, hit.normal);
+        }
+    }
 
     public void HeatUp()
     {
