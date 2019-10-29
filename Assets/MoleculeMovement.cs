@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MoleculeMovement : MonoBehaviour
 {
-    public Vector3 velocity = new Vector3(15.0f, 15.0f, 15.0f);
-    public float temperature = 5.0f;
+    public float temperature = 200.0f;
+    public float mass = 0.010126f;
 
     private Rigidbody rb;
     private Vector3 currentMovementDirection;
@@ -17,8 +17,8 @@ public class MoleculeMovement : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.cyan;
         rb = GetComponent<Rigidbody>();
         transform.rotation = UnityEngine.Random.rotation;
-
-        currentMovementDirection = transform.forward * 5.0f;
+        
+        currentMovementDirection = transform.forward * KineticEnergy();
         lastPos = transform.position;
         Debug.Log(currentMovementDirection);
     }
@@ -50,12 +50,6 @@ public class MoleculeMovement : MonoBehaviour
         ReflectProjectile();
     }
 
-    private void ReflectProjectile(Rigidbody rb, Vector3 reflectVector)
-    {
-        velocity = Vector3.Reflect(velocity, reflectVector);
-        rb.velocity = velocity;
-    }
-
     private void ReflectProjectile()
     {
         RaycastHit hit;
@@ -70,12 +64,21 @@ public class MoleculeMovement : MonoBehaviour
     public void HeatUp()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        currentMovementDirection = new Vector3(0, 1.0f, 0) * 8.0f;
+        temperature = 350.0f;
+        currentMovementDirection = new Vector3(0, 1.0f, 0) * KineticEnergy();
         heated = true;
     }
 
     public bool isHeated()
     {
         return heated;
+    }
+
+    public float KineticEnergy()
+    {
+        double rms = (3.0f * 1.38f * temperature)/mass;
+        Debug.Log(rms);
+        Debug.Log((float)Math.Sqrt(rms));
+        return ((float) Math.Sqrt(rms))/100.0f;
     }
 }
