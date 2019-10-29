@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83f97baae10dfd48a4f6f3f0f2cd8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 2, z: 0}
-  temperature: 15
+  temperature: 200
+  mass: 0.010126
 --- !u!54 &-5701235417491733530
 Rigidbody:
   m_ObjectHideFlags: 0
