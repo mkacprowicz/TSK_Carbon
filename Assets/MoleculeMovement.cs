@@ -12,6 +12,7 @@ public class MoleculeMovement : MonoBehaviour
     private Vector3 currentMovementDirection;
     private Vector3 lastPos;
     private bool heated = false;
+    private bool carbon = false;
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.cyan;
@@ -20,7 +21,6 @@ public class MoleculeMovement : MonoBehaviour
         
         currentMovementDirection = transform.forward * KineticEnergy();
         lastPos = transform.position;
-        Debug.Log(currentMovementDirection);
     }
 
     void Update()
@@ -38,11 +38,7 @@ public class MoleculeMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = currentMovementDirection;
-        //if (heated)
-        //{
-        //transform.GetComponent<Rigidbody>().AddForce(new Vector3(0, 5.0f, 0), ForceMode.Impulse);
-        //}
+        rb.velocity = currentMovementDirection;   
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,7 +61,7 @@ public class MoleculeMovement : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = Color.red;
         temperature = 350.0f;
-        currentMovementDirection = new Vector3(0, 1.0f, 0) * KineticEnergy();
+        currentMovementDirection = transform.forward * KineticEnergy();
         heated = true;
     }
 
@@ -77,16 +73,28 @@ public class MoleculeMovement : MonoBehaviour
         heated = false;
     }
 
+    public void createCarbon()
+    {
+        GetComponent<Renderer>().material.color = Color.black;
+        temperature = 500.0f;
+        currentMovementDirection = transform.forward * KineticEnergy();
+        carbon = true;
+        heated = true;
+    }
+
     public bool isHeated()
     {
         return heated;
     }
 
+    public bool isCarbon()
+    {
+        return carbon;
+    }
+
     public float KineticEnergy()
     {
         double rms = (3.0f * 1.38f * temperature)/mass;
-        Debug.Log(rms);
-        Debug.Log((float)Math.Sqrt(rms));
         return ((float) Math.Sqrt(rms))/100.0f;
     }
 }

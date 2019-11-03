@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Heater : MonoBehaviour
 {
+
+    public GameObject airGenerator;
+
+    public static float carbonChance = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +24,20 @@ public class Heater : MonoBehaviour
     {
         if (other.CompareTag("Molecule"))
         {
-            if (!other.GetComponent<MoleculeMovement>().isHeated())
+            if (!other.GetComponent<MoleculeMovement>().isHeated() && !other.GetComponent<MoleculeMovement>().isCarbon())
             {
-                other.GetComponent<MoleculeMovement>().HeatUp();
+                if(Random.Range(0, 100) < carbonChance)
+                {
+                    other.GetComponent<MoleculeMovement>().createCarbon();
+                    airGenerator.GetComponent<AirGenerator>().carbonMonoxide.Add(other);
+                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other);
+                }
+                else
+                {
+                    other.GetComponent<MoleculeMovement>().HeatUp();
+                    airGenerator.GetComponent<AirGenerator>().hotAir.Add(other);
+                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other);
+                }                           
             }           
         }
     }

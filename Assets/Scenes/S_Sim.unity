@@ -1666,6 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a964f182ae51ae84ca7c4783f6e55baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airGenerator: {fileID: 2120112549}
 --- !u!65 &547148021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5598,17 +5599,17 @@ PrefabInstance:
     - target: {fileID: 3148979460989361056, guid: d4df0ec5d648db141b3b8a9e79c601af,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.036
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3148979460989361056, guid: d4df0ec5d648db141b3b8a9e79c601af,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.421
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3148979460989361056, guid: d4df0ec5d648db141b3b8a9e79c601af,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 3148979460989361056, guid: d4df0ec5d648db141b3b8a9e79c601af,
         type: 3}
@@ -5684,6 +5685,26 @@ PrefabInstance:
         type: 3}
       propertyPath: maxValues.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148979460989361057, guid: d4df0ec5d648db141b3b8a9e79c601af,
+        type: 3}
+      propertyPath: spanPointMain.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148979460989361057, guid: d4df0ec5d648db141b3b8a9e79c601af,
+        type: 3}
+      propertyPath: spanPointMain.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148979460989361057, guid: d4df0ec5d648db141b3b8a9e79c601af,
+        type: 3}
+      propertyPath: spanPointSecond.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148979460989361057, guid: d4df0ec5d648db141b3b8a9e79c601af,
+        type: 3}
+      propertyPath: spanPointSecond.z
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4df0ec5d648db141b3b8a9e79c601af, type: 3}
@@ -5983,3 +6004,9 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097757872}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2120112549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3148979460989361058, guid: d4df0ec5d648db141b3b8a9e79c601af,
+    type: 3}
+  m_PrefabInstance: {fileID: 1941475743}
+  m_PrefabAsset: {fileID: 0}
