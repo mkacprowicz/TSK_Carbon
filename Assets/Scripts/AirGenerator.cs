@@ -50,6 +50,5 @@ public class AirGenerator : MonoBehaviour
                 Heater.carbonChance = 50f;
             }
         }
-        
     }
 }
