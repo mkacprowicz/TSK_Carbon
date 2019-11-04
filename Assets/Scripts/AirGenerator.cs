@@ -87,4 +87,14 @@ public class AirGenerator : MonoBehaviour
             generated = true;
         }
     }
+
+    public void SetInitialTemperature(string value)
+    {
+        initialTemperature = float.Parse(value);
+    }
+
+    public void SetNumberOfMolecules(string value)
+    {
+        amount = int.Parse(value);
+    }
 }
