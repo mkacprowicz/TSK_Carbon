@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MoleculeMovement : MonoBehaviour
 {
-    public float temperature = 200.0f;
+    public float initialTemperature = 200f;
+    public float temperature = 200f;
     public float mass = 0.010126f;
 
     private Rigidbody rb;
@@ -13,12 +14,13 @@ public class MoleculeMovement : MonoBehaviour
     private Vector3 lastPos;
     private bool heated = false;
     private bool carbon = false;
+    public int room;
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.cyan;
         rb = GetComponent<Rigidbody>();
         transform.rotation = UnityEngine.Random.rotation;
-        
+
         currentMovementDirection = transform.forward * KineticEnergy();
         lastPos = transform.position;
     }
@@ -38,7 +40,7 @@ public class MoleculeMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = currentMovementDirection;   
+        rb.velocity = currentMovementDirection;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -60,7 +62,7 @@ public class MoleculeMovement : MonoBehaviour
     public void HeatUp()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        temperature = 350.0f;
+        temperature = 2233.15f;
         currentMovementDirection = transform.forward * KineticEnergy();
         heated = true;
     }
@@ -68,7 +70,7 @@ public class MoleculeMovement : MonoBehaviour
     public void HeatDown()
     {
         GetComponent<Renderer>().material.color = Color.cyan;
-        temperature = 200.0f;
+        temperature = initialTemperature;
         currentMovementDirection = transform.forward * KineticEnergy();
         heated = false;
     }
@@ -76,7 +78,7 @@ public class MoleculeMovement : MonoBehaviour
     public void createCarbon()
     {
         GetComponent<Renderer>().material.color = Color.black;
-        temperature = 500.0f;
+        temperature = 2233.15f;
         currentMovementDirection = transform.forward * KineticEnergy();
         carbon = true;
         heated = true;
@@ -94,7 +96,25 @@ public class MoleculeMovement : MonoBehaviour
 
     public float KineticEnergy()
     {
-        double rms = (3.0f * 1.38f * temperature)/mass;
-        return ((float) Math.Sqrt(rms))/100.0f;
+        double rms = (3.0f * 1.38f * temperature) / mass;
+        return ((float)Math.Sqrt(rms)) / 100.0f;
+    }
+
+    public void SetInitialTemperature(float temperature)
+    {
+        initialTemperature = temperature;
+        this.temperature = temperature;
+    }
+
+    public void changeRoom()
+    {
+        if (room == 1)
+        {
+            room = 2;
+        }
+        else
+        {
+            room = 1;
+        }
     }
 }
