@@ -23,13 +23,24 @@ public class UIUpdater : MonoBehaviour
     {
         float R1 = AirGenerator.GetComponent<AirGenerator>().concentrationFirst;
         float R2 = AirGenerator.GetComponent<AirGenerator>().concentrationSecond;
-       
 
-        TextRoom1.GetComponent<UnityEngine.UI.Text>().text = R1.ToString();
-        //TextRoom1.GetComponent<UnityEngine.UI.Text>().color = Color.black;
-        TextRoom2.GetComponent<UnityEngine.UI.Text>().text = R2.ToString();
-       // TextRoom2.GetComponent<UnityEngine.UI.Text>().color = Color.black;
+        if (float.IsNaN(R1))
+        {
+            R1 = 0;
+        }
 
+        if (float.IsNaN(R2))
+        {
+            R2 = 0;
+        }
+
+
+        R1 = Mathf.Round(R1 * 100.0f) / 100.0f;
+        R2 = Mathf.Round(R2 * 100.0f) / 100.0f;
+
+
+        TextRoom1.GetComponent<UnityEngine.UI.Text>().text = R1.ToString() + "%";
+        TextRoom2.GetComponent<UnityEngine.UI.Text>().text = R2.ToString() + "%";
 
 
         if (R1 >= 0.5f)
