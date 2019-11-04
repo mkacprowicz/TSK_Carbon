@@ -46,7 +46,11 @@ public class AirGenerator : MonoBehaviour
                         where gameObject.GetComponent<MoleculeMovement>().room == 1
                         select gameObject;
 
-        concentrationFirst = (float)carbonMonoxide.Count / (hotFirst.Count() + coldFirst.Count()) * 100f;
+        var monoFirst = from GameObject gameObject in carbonMonoxide
+                        where gameObject.GetComponent<MoleculeMovement>().room == 1
+                        select gameObject;
+
+        concentrationFirst = (float)monoFirst.Count() / (hotFirst.Count() + coldFirst.Count()) * 100f;
 
         var hotSecond = from GameObject gameObject in hotAir
                         where gameObject.GetComponent<MoleculeMovement>().room == 2
@@ -56,7 +60,11 @@ public class AirGenerator : MonoBehaviour
                          where gameObject.GetComponent<MoleculeMovement>().room == 2
                          select gameObject;
 
-        concentrationFirst = (float)carbonMonoxide.Count / (hotSecond.Count() + coldSecond.Count()) * 100f;
+        var monoSecond = from GameObject gameObject in carbonMonoxide
+                        where gameObject.GetComponent<MoleculeMovement>().room == 2
+                        select gameObject;
+
+        concentrationSecond = (float)monoSecond.Count() / (hotSecond.Count() + coldSecond.Count()) * 100f;
 
         if (coldFirst.Count() != 0)
         {
