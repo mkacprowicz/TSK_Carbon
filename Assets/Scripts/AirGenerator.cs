@@ -22,6 +22,11 @@ public class AirGenerator : MonoBehaviour
     public ArrayList coldAir;
     public ArrayList hotAir;
     public ArrayList carbonMonoxide;
+
+    public int NumR1 = 0;
+    public int NumR2 = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,10 @@ public class AirGenerator : MonoBehaviour
                         where gameObject.GetComponent<MoleculeMovement>().room == 1
                         select gameObject;
 
+        NumR1 = hotFirst.Count() + coldFirst.Count() + monoFirst.Count();
+
+
+
         concentrationFirst = (float)monoFirst.Count() / (hotFirst.Count() + coldFirst.Count()) * 100f;
 
         var hotSecond = from GameObject gameObject in hotAir
@@ -63,6 +72,9 @@ public class AirGenerator : MonoBehaviour
         var monoSecond = from GameObject gameObject in carbonMonoxide
                         where gameObject.GetComponent<MoleculeMovement>().room == 2
                         select gameObject;
+
+        NumR2 = hotSecond.Count() + coldSecond.Count() + monoSecond.Count();
+
 
         concentrationSecond = (float)monoSecond.Count() / (hotSecond.Count() + coldSecond.Count()) * 100f;
 
@@ -114,5 +126,10 @@ public class AirGenerator : MonoBehaviour
     public void SetNumberOfMolecules(string value)
     {
         amount = int.Parse(value);
+    }
+
+    public bool GetGeneratedStatus()
+    {
+        return generated;
     }
 }

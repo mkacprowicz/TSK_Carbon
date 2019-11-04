@@ -21,11 +21,17 @@ public class Cooler : MonoBehaviour
     {
         if (collision.collider.CompareTag("Molecule"))
         {
-            if (collision.collider.GetComponent<MoleculeMovement>().isHeated() && !collision.collider.GetComponent<MoleculeMovement>().isCarbon())
+            if (collision.collider.GetComponent<MoleculeMovement>().isHeated())
             {
                 collision.collider.GetComponent<MoleculeMovement>().HeatDown();
                 airGenerator.GetComponent<AirGenerator>().coldAir.Add(collision.gameObject);
                 airGenerator.GetComponent<AirGenerator>().hotAir.Remove(collision.gameObject);
+            }
+            else if (collision.collider.GetComponent<MoleculeMovement>().isCarbon())
+            {
+                collision.collider.GetComponent<MoleculeMovement>().HeatDown();
+                airGenerator.GetComponent<AirGenerator>().coldAir.Add(collision.gameObject);
+                airGenerator.GetComponent<AirGenerator>().carbonMonoxide.Remove(collision.gameObject);
             }
         }
     }

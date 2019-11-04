@@ -117,4 +117,9 @@ public class MoleculeMovement : MonoBehaviour
             room = 1;
         }
     }
+
+    public void changeRoom(int roomNr)
+    {
+        room = roomNr;
+    }
 }

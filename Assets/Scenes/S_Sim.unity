@@ -491,6 +491,112 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223750068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223750073}
+  - component: {fileID: 223750072}
+  - component: {fileID: 223750071}
+  - component: {fileID: 223750070}
+  - component: {fileID: 223750069}
+  m_Layer: 0
+  m_Name: RoomChangerR2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &223750069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223750068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f4209f8ed21b4d9ccde60c902ea29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToRoom: 2
+--- !u!65 &223750070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223750068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &223750071
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223750068}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5d7bf2b65ed3dbc47ba2b6d71a1fadf6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &223750072
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223750068}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &223750073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223750068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.9, z: -0.09}
+  m_LocalScale: {x: 0.1, y: 2.1, z: 1.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &243592597
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +648,11 @@ MonoBehaviour:
   TextRoom1: {fileID: 34216200}
   TextRoom2: {fileID: 2145617740}
   AirGenerator: {fileID: 2120112549}
+  UiObject1: {fileID: 926363055}
+  UiObject2: {fileID: 1361375023}
+  UiObject3: {fileID: 1169687395}
+  UiObject4: {fileID: 1253992133}
+  UiObject5: {fileID: 966699200}
 --- !u!1 &275880430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,6 +2666,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922169479}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &926363055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3156057887017707421, guid: 0aacf6ebe49e18243a86de7616842fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 5734615573133501187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &966699200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6935959426969690936, guid: 0aacf6ebe49e18243a86de7616842fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 5734615573133501187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &974709133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2809,12 @@ MeshFilter:
 --- !u!224 &1154543490 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6807968771364297271, guid: 0aacf6ebe49e18243a86de7616842fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 5734615573133501187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1169687395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1418951991286985465, guid: 0aacf6ebe49e18243a86de7616842fae,
     type: 3}
   m_PrefabInstance: {fileID: 5734615573133501187}
   m_PrefabAsset: {fileID: 0}
@@ -2964,6 +3093,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 75.9, y: 28.1, z: 3.5}
+--- !u!1 &1253992133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2255837776498615646, guid: 0aacf6ebe49e18243a86de7616842fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 5734615573133501187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1284876649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3608,6 +3743,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325852096}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1361375023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8378912802895784000, guid: 0aacf6ebe49e18243a86de7616842fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 5734615573133501187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1370654384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,6 +4495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 974709133}
+  RoomChanger1: {fileID: 1992413528}
+  RoomChanger2: {fileID: 223750068}
 --- !u!1 &1790489231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4958,12 +5101,12 @@ GameObject:
   - component: {fileID: 1992413530}
   - component: {fileID: 1992413529}
   m_Layer: 0
-  m_Name: RoomChanger
+  m_Name: RoomChangerR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1992413529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4976,6 +5119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579f4209f8ed21b4d9ccde60c902ea29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToRoom: 1
 --- !u!65 &1992413530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5043,8 +5187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992413528}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.885, z: 0}
-  m_LocalScale: {x: 0.0900001, y: 2, z: 1.2}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0.09}
+  m_LocalScale: {x: 0.100001, y: 2.1, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
