@@ -24,8 +24,8 @@ public class Cooler : MonoBehaviour
             if (collision.collider.GetComponent<MoleculeMovement>().isHeated() && !collision.collider.GetComponent<MoleculeMovement>().isCarbon())
             {
                 collision.collider.GetComponent<MoleculeMovement>().HeatDown();
-                airGenerator.GetComponent<AirGenerator>().coldAir.Add(collision);
-                airGenerator.GetComponent<AirGenerator>().hotAir.Remove(collision);
+                airGenerator.GetComponent<AirGenerator>().coldAir.Add(collision.gameObject);
+                airGenerator.GetComponent<AirGenerator>().hotAir.Remove(collision.gameObject);
             }
         }
     }

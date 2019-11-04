@@ -29,14 +29,14 @@ public class Heater : MonoBehaviour
                 if(Random.Range(0, 100) < carbonChance)
                 {
                     other.GetComponent<MoleculeMovement>().createCarbon();
-                    airGenerator.GetComponent<AirGenerator>().carbonMonoxide.Add(other);
-                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other);
+                    airGenerator.GetComponent<AirGenerator>().carbonMonoxide.Add(other.gameObject);                    
+                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other.gameObject);                    
                 }
                 else
                 {
                     other.GetComponent<MoleculeMovement>().HeatUp();
-                    airGenerator.GetComponent<AirGenerator>().hotAir.Add(other);
-                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other);
+                    airGenerator.GetComponent<AirGenerator>().hotAir.Add(other.gameObject);
+                    airGenerator.GetComponent<AirGenerator>().coldAir.Remove(other.gameObject);
                 }                           
             }           
         }
