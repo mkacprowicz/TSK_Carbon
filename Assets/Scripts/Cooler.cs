@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cooler : MonoBehaviour
 {
+    public GameObject airGenerator;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,11 @@ public class Cooler : MonoBehaviour
     {
         if (collision.collider.CompareTag("Molecule"))
         {
-            if (collision.collider.GetComponent<MoleculeMovement>().isHeated())
+            if (collision.collider.GetComponent<MoleculeMovement>().isHeated() && !collision.collider.GetComponent<MoleculeMovement>().isCarbon())
             {
                 collision.collider.GetComponent<MoleculeMovement>().HeatDown();
+                airGenerator.GetComponent<AirGenerator>().coldAir.Add(collision);
+                airGenerator.GetComponent<AirGenerator>().hotAir.Remove(collision);
             }
         }
     }
