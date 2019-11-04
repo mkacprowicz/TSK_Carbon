@@ -14,7 +14,8 @@ public class AirGenerator : MonoBehaviour
     public Vector3 spanPointOutside = new Vector3(0f, 0.5f, -2f);
 
     //public float density;
-    public float concentration;
+    public float concentrationFirst;
+    public float concentrationSecond;
 
     private bool generated = false;
 
@@ -37,9 +38,6 @@ public class AirGenerator : MonoBehaviour
             Generate();
         }
 
-
-        concentration = (float)carbonMonoxide.Count / amount * 100f;
-
         var hotFirst = from GameObject gameObject in hotAir
                        where gameObject.GetComponent<MoleculeMovement>().room == 1
                        select gameObject;
@@ -48,10 +46,22 @@ public class AirGenerator : MonoBehaviour
                         where gameObject.GetComponent<MoleculeMovement>().room == 1
                         select gameObject;
 
-        if (coldAir.Count != 0)
+        concentrationFirst = (float)carbonMonoxide.Count / (hotFirst.Count() + coldFirst.Count()) * 100f;
+
+        var hotSecond = from GameObject gameObject in hotAir
+                        where gameObject.GetComponent<MoleculeMovement>().room == 2
+                        select gameObject;
+
+        var coldSecond = from GameObject gameObject in coldAir
+                         where gameObject.GetComponent<MoleculeMovement>().room == 2
+                         select gameObject;
+
+        concentrationFirst = (float)carbonMonoxide.Count / (hotSecond.Count() + coldSecond.Count()) * 100f;
+
+        if (coldFirst.Count() != 0)
         {
             float temp = (float)hotFirst.Count() / coldFirst.Count();
-            temp = 1f - (1f / (0.02f * Mathf.Pow(temp, 2) + 1f));
+            temp = 1f - (1f / (0.01f * Mathf.Pow(temp, 2) + 1f));
             Heater.carbonChance = temp * 100f;
         }
         else
