@@ -25,6 +25,7 @@ public class AirGenerator : MonoBehaviour
     public int NumR1 = 0;
     public int NumR2 = 0;
 
+    public float RateOfPropability = 0.01f;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +80,7 @@ public class AirGenerator : MonoBehaviour
         if (coldFirst.Count() != 0)
         {
             float temp = (float)hotFirst.Count() / coldFirst.Count();
-            temp = 1f - (1f / (0.01f * Mathf.Pow(temp, 2) + 1f));
+            temp = 1f - (1f / (RateOfPropability * Mathf.Pow(temp, 2) + 1f));
             Heater.carbonChance = temp * 100f;
             //Debug.Log("chance " + Heater.carbonChance);
         }
@@ -130,5 +131,18 @@ public class AirGenerator : MonoBehaviour
     public bool GetGeneratedStatus()
     {
         return generated;
+    }
+
+    public void RateUp()
+    {
+        RateOfPropability += 0.1f;
+    }
+
+    public void RateDown()
+    {
+        RateOfPropability -= 0.1f;
+
+        if (RateOfPropability <= 0)
+            RateOfPropability = 0.01f;
     }
 }

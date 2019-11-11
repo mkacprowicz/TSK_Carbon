@@ -26,7 +26,7 @@ public class Heater : MonoBehaviour
         {
             if (!other.GetComponent<MoleculeMovement>().isHeated() && !other.GetComponent<MoleculeMovement>().isCarbon())
             {
-                if(Random.Range(2, 100) < carbonChance)
+                if(Random.Range(1, 100) < carbonChance)
                 {
                     other.GetComponent<MoleculeMovement>().createCarbon();
                     airGenerator.GetComponent<AirGenerator>().carbonMonoxide.Add(other.gameObject);                    
